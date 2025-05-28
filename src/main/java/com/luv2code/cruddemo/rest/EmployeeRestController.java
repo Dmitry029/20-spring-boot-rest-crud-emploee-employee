@@ -2,10 +2,7 @@ package com.luv2code.cruddemo.rest;
 
 import com.luv2code.cruddemo.entity.Employee;
 import com.luv2code.cruddemo.service.EmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,4 +30,17 @@ public class EmployeeRestController {
         }
         return theEmployee;
     }
+
+    @PostMapping("/employees")
+    public Employee addEmployee(@RequestBody Employee theEmployee) {
+        theEmployee.setId(0);
+        return employeeService.save(theEmployee);
+    }
+
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee theEmployee) {
+        return employeeService.save(theEmployee);
+    }
+
+
 }
